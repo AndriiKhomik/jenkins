@@ -8,7 +8,8 @@ pipeline {
             steps {
                 echo "Building..."
                 sh '''
-                    cd app
+                    cd jenkins
+                    npm run build
                 '''
             }
         }
@@ -16,7 +17,8 @@ pipeline {
             steps {
                 echo "Testing..."
                 sh '''
-                    cd app
+                    cd jenkins
+                    pwd
                 '''
             }
         }
@@ -24,7 +26,8 @@ pipeline {
             steps {
                 echo "Staging..."
                 sh '''
-                    cd app
+                    cd jenkins
+                    ls -a
                 '''
             }
         }
@@ -32,7 +35,8 @@ pipeline {
             steps {
                 echo "Delivering..."
                 sh '''
-                    cd app
+                    cd jenkins
+                    ll
                 '''
             }
         }
