@@ -1,15 +1,16 @@
 pipeline {
-    agent any
+    agent {
+        docker {image 'node:20.11.1-alpine3.19'}
+    }
     triggers {
-        pollSCM '* * * * *'
+        pollSCM 'H/5 * * * *'
     }
     stages {
         stage ('Build') {
             steps {
                 echo "Building..."
                 sh '''
-                    cd jenkins
-                    npm run build
+                    pwd
                 '''
             }
         }
@@ -17,7 +18,6 @@ pipeline {
             steps {
                 echo "Testing..."
                 sh '''
-                    cd jenkins
                     pwd
                 '''
             }
@@ -26,7 +26,6 @@ pipeline {
             steps {
                 echo "Staging..."
                 sh '''
-                    cd jenkins
                     ls -a
                 '''
             }
@@ -35,7 +34,6 @@ pipeline {
             steps {
                 echo "Delivering..."
                 sh '''
-                    cd jenkins
                     ll
                 '''
             }
