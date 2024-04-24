@@ -13,7 +13,7 @@ pipeline {
                     pwd
                     npm run build
                 '''
-                archiveArtifacts actifacts: '**/*', allowEmptyArchive: true
+                archiveArtifacts artifacts: '**/*', allowEmptyArchive: true
             }
         }
         stage ('Test') {
