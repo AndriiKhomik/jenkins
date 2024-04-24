@@ -13,7 +13,6 @@ pipeline {
                     pwd
                     npm run build
                 '''
-                archiveArtifacts artifacts: '**/*', allowEmptyArchive: true
             }
         }
         stage ('Test') {
@@ -35,7 +34,6 @@ pipeline {
         stage ('Deliver') {
             steps {
                 echo "Delivering..."
-                copyArtifacts(projectName: 'Build', selector: lastSuccessful(), filter: '**/*')
                 sh '''
                     ls -a
                     cp build build-new
