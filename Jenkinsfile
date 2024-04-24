@@ -1,6 +1,9 @@
 pipeline {
     agent {
-        docker {image 'coexcz/node-alpine:v16.14.2'}
+        docker {
+            image 'coexcz/node-alpine:v16.14.2'
+            args '-u root'
+            }
     }
     triggers {
         pollSCM 'H/5 * * * *'
@@ -13,11 +16,6 @@ pipeline {
                     pwd
                     node -v
                     npm -v
-                    mkdir ~/.npm-global
-                    npm config set prefix '~/.npm-global'
-                    export PATH=~/.npm-global/bin:$PATH
-                    source ~/.profile
-                    npm install -g jshint
                     npm install
                 '''
             }
