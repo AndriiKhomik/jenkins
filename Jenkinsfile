@@ -13,9 +13,7 @@ pipeline {
                     pwd
                     node -v
                     npm -v
-                    chown -R 114:119 "/.npm"
                     npm install
-                    npm run build
                 '''
             }
         }
