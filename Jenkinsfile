@@ -20,6 +20,7 @@ pipeline {
                     npm -v
                     rm -r node_modules
                     npm install
+                    npm run build
                 '''
             }
         }
