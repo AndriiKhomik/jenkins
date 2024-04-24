@@ -11,7 +11,6 @@ pipeline {
                 echo "Building..."
                 sh '''
                     pwd
-                    npm run build
                 '''
             }
         }
@@ -35,8 +34,6 @@ pipeline {
             steps {
                 echo "Delivering..."
                 sh '''
-                    ls -a
-                    cp build build-new
                     ls -a
                 '''
             }
