@@ -47,6 +47,7 @@ pipeline {
                 unstash 'my-build'
                 sh '''
                     ls -a
+                    mkdir deployment-ready
                     cp -r build/* deployment-ready
                     ls -a
                 '''
