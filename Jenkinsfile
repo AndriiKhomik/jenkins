@@ -2,8 +2,10 @@ pipeline {
     agent {
         docker {
             image 'coexcz/node-alpine:v16.14.2'
-            args '-u root:sudo -v -v /var/lib/jenkins/workspace/react:/var/lib/jenkins/workspace/react'
             }
+    }
+    environment {
+        HOME = '.'
     }
     triggers {
         pollSCM 'H/5 * * * *'
@@ -16,7 +18,6 @@ pipeline {
                     pwd
                     node -v
                     npm -v
-                    npm install
                 '''
             }
         }
