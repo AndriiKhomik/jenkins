@@ -13,6 +13,7 @@ pipeline {
                     pwd
                     node -v
                     npm -v
+                    npm run build
                 '''
             }
         }
