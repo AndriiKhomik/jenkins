@@ -11,6 +11,8 @@ pipeline {
                 echo "Building..."
                 sh '''
                     pwd
+                    node -v
+                    npm -v
                 '''
             }
         }
