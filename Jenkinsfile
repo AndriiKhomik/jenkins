@@ -18,6 +18,7 @@ pipeline {
                     pwd
                     node -v
                     npm -v
+                    rm -r node_modules
                     npm install
                 '''
             }
