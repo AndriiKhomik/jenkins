@@ -11,7 +11,9 @@ pipeline {
                 echo "Building..."
                 sh '''
                     pwd
+                    npm run build
                 '''
+                archiveArtifacts actifacts: '**/*', allowEmptyArchive: true
             }
         }
         stage ('Test') {
@@ -33,8 +35,11 @@ pipeline {
         stage ('Deliver') {
             steps {
                 echo "Delivering..."
+                copyArtifacts(projectName: 'Build', selector: lastSuccessful(), filter: '**/*')
                 sh '''
-                    ll
+                    ls -a
+                    cp build build-new
+                    ls -a
                 '''
             }
         }
