@@ -13,6 +13,7 @@ pipeline {
                     pwd
                     node -v
                     npm -v
+                    sudo chown -R 114:119 "/.npm"
                     npm install
                     npm run build
                 '''
