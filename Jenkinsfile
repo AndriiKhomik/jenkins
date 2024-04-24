@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'coexcz/node-alpine:v16.14.2'
-            args '-u root'
+            args '-u root:sudo'
             }
     }
     triggers {
