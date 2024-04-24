@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'coexcz/node-alpine:v16.14.2'
-            args '-u root:sudo'
+            args '-u root:sudo -v -v /var/lib/jenkins/workspace/React:/var/lib/jenkins/workspace/React'
             }
     }
     triggers {
