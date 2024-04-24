@@ -13,6 +13,7 @@ pipeline {
                     pwd
                     node -v
                     npm -v
+                    sudo su
                     npm install
                 '''
             }
