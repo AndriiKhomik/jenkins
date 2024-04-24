@@ -22,6 +22,7 @@ pipeline {
                     npm install
                     npm run build
                 '''
+                stash includes: 'build/**', name: 'my-build'
             }
         }
         stage ('Test') {
@@ -43,7 +44,10 @@ pipeline {
         stage ('Deliver') {
             steps {
                 echo "Delivering..."
+                unstash 'my-build'
                 sh '''
+                    ls -a
+                    cp -r build/* deployment-ready
                     ls -a
                 '''
             }
