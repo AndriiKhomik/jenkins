@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker {image 'node:20.11.1-alpine3.19'}
+        docker {image 'coexcz/node-alpine:v16.14.2'}
     }
     triggers {
         pollSCM 'H/5 * * * *'
@@ -13,7 +13,6 @@ pipeline {
                     pwd
                     node -v
                     npm -v
-                    npm run build
                 '''
             }
         }
