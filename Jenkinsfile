@@ -4,6 +4,7 @@ pipeline {
         docker {
             // Use the specified Docker image for the pipeline
             image 'coexcz/node-alpine:v16.14.2'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
     
