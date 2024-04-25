@@ -55,13 +55,4 @@ pipeline {
             }
         }
     }
-    post {
-        success {
-            emailtext (
-                subject: "Success: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                body: """<p>Success: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'</p>""",
-                recepientProviders: [[$class: 'CulpritsRecepientProvider']]
-            )
-        }
-    }
 }
