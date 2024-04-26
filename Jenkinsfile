@@ -4,8 +4,8 @@ pipeline {
         docker {
             // alwaysPull true
             // Use the specified Docker image for the pipeline
-            image 'coexcz/node-alpine:v16.14.2'
-            
+            // image 'coexcz/node-alpine:v16.14.2'
+            image: 'node:18-alpine'
         }
     }
     
@@ -29,7 +29,8 @@ pipeline {
                 sh '''
                     pwd                 // Print current directory
                     node -v             // Print Node.js version
-
+                    npm -v              // Print npm version
+                    rm -r node_modules  // Remove node_modules directory
                     npm install         // Install project dependencies
                     npm run build       // Build the project
                 '''
