@@ -66,7 +66,7 @@ pipeline {
                 unstash 'my-build'                   // Unstash the 'build' directory from the 'Build' stage
                 sh '''
                     ls -a                           
-                    rm -r deployment-ready          
+         
                     mkdir deployment-ready          
                     cp -r build/* deployment-ready  
                     ls -a                           
