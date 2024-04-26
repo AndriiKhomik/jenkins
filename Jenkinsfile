@@ -51,7 +51,7 @@ pipeline {
             steps {
                 echo "Staging..."
                 sh '''
-
+                    ls -a               // List all files in the current directory
                 '''
             }
         }
