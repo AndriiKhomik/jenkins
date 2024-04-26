@@ -4,8 +4,7 @@ pipeline {
         docker {
             // alwaysPull true
             // Use the specified Docker image for the pipeline
-            // image 'coexcz/node-alpine:v16.14.2'
-            image 'node:18-alpine3.16'
+            image 'coexcz/node-alpine:v16.14.2'
         }
     }
     
