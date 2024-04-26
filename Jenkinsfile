@@ -4,7 +4,8 @@ pipeline {
         docker {
             // alwaysPull true
             // Use the specified Docker image for the pipeline
-            image 'node:hydrogen-bullseye-slim'
+            // image 'coexcz/node-alpine:v16.14.2'
+            image: 'debian:buster-20210408'
             
         }
     }
