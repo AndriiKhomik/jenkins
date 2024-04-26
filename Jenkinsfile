@@ -51,7 +51,7 @@ pipeline {
             steps {
                 echo "Staging..."
                 sh '''
-                    ls -a               // List all files in the current directory
+
                 '''
             }
         }
@@ -60,9 +60,9 @@ pipeline {
         stage ('Deliver') {
             steps {
                 echo "Delivering..."
-                unstash 'my-build'                   // Unstash the 'build' directory from the 'Build' stage
+                // unstash 'my-build'                   // Unstash the 'build' directory from the 'Build' stage
                 sh '''
-                    ls -a                           // List all files in the current directory
+
 
                 '''
             }
