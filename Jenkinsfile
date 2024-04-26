@@ -29,8 +29,7 @@ pipeline {
                 sh '''
                     pwd                 // Print current directory
                     node -v             // Print Node.js version
-                    npm -v              // Print npm version
-                    rm -r node_modules  // Remove node_modules directory
+
                     npm install         // Install project dependencies
                     npm run build       // Build the project
                 '''
