@@ -5,6 +5,7 @@ pipeline {
             // alwaysPull true
             // Use the specified Docker image for the pipeline
             image 'coexcz/node-alpine:v16.14.2'
+            
         }
     }
     
@@ -26,12 +27,15 @@ pipeline {
             steps {
                 echo "Building..."
                 sh '''
-                    pwd                 // Print current directory
-                    node -v             // Print Node.js version
-
+                    pwd                 
+                    node -v             
+                    npm -v              
+                    rm -r node_modules  
+                    npm install         
+                    npm run build       
                 '''
                 // Stash the build directory to be used in the 'Deliver' stage
-                // stash includes: 'build/**', name: 'my-build'
+                stash includes: 'build/**', name: 'my-build'
             }
         }
         
@@ -40,7 +44,7 @@ pipeline {
             steps {
                 echo "Testing..."
                 sh '''
-                    pwd                 // Print current directory
+                    pwd                 
                 '''
             }
         }
@@ -50,7 +54,7 @@ pipeline {
             steps {
                 echo "Staging..."
                 sh '''
-                    ls -a               // List all files in the current directory
+                    ls -a               
                 '''
             }
         }
@@ -59,10 +63,13 @@ pipeline {
         stage ('Deliver') {
             steps {
                 echo "Delivering..."
-                // unstash 'my-build'                   // Unstash the 'build' directory from the 'Build' stage
+                unstash 'my-build'                   // Unstash the 'build' directory from the 'Build' stage
                 sh '''
-
-
+                    ls -a                           
+                    rm -r deployment-ready          
+                    mkdir deployment-ready          
+                    cp -r build/* deployment-ready  
+                    ls -a                           
                 '''
             }
         }
