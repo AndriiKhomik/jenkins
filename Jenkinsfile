@@ -29,13 +29,10 @@ pipeline {
                 sh '''
                     pwd                 // Print current directory
                     node -v             // Print Node.js version
-                    npm -v              // Print npm version
-                    rm -r node_modules  // Remove node_modules directory
-                    npm install         // Install project dependencies
-                    npm run build       // Build the project
+
                 '''
                 // Stash the build directory to be used in the 'Deliver' stage
-                stash includes: 'build/**', name: 'my-build'
+                // stash includes: 'build/**', name: 'my-build'
             }
         }
         
@@ -66,10 +63,7 @@ pipeline {
                 unstash 'my-build'                   // Unstash the 'build' directory from the 'Build' stage
                 sh '''
                     ls -a                           // List all files in the current directory
-                    rm -r deployment-ready          // Remove the 'deployment-ready' directory
-                    mkdir deployment-ready          // Create a new 'deployment-ready' directory
-                    cp -r build/* deployment-ready  // Copy build files to the 'deployment-ready' directory
-                    ls -a                           // List all files in the 'deployment-ready' directory
+
                 '''
             }
         }
